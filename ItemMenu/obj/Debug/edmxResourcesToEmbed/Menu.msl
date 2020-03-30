@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MenuDBModelStoreContainer" CdmEntityContainer="MenuDBEntities">
+    <EntitySetMapping Name="vwItems">
+      <EntityTypeMapping TypeName="MenuDBModel.vwItems">
+        <MappingFragment StoreEntitySet="vwItems">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetIngrediens" FunctionName="MenuDBModel.Store.GetIngrediens">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MenuDBModel.GetIngrediens_Result">
+          <ScalarProperty Name="Ingrediens" ColumnName="Ingrediens" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOrdersByPhone" FunctionName="MenuDBModel.Store.GetOrdersByPhone">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MenuDBModel.GetOrdersByPhone_Result">
+          <ScalarProperty Name="ID_OrderInfo" ColumnName="ID_OrderInfo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOrdersStatus" FunctionName="MenuDBModel.Store.GetOrdersStatus" />
+    <EntitySetMapping Name="Item">
+      <EntityTypeMapping TypeName="MenuDBModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderInfo">
+      <EntityTypeMapping TypeName="MenuDBModel.OrderInfo">
+        <MappingFragment StoreEntitySet="OrderInfo">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderInfoItem">
+      <EntityTypeMapping TypeName="MenuDBModel.OrderInfoItem">
+        <MappingFragment StoreEntitySet="OrderInfoItem">
+          <ScalarProperty Name="ID_Primary" ColumnName="ID_Primary" />
+          <ScalarProperty Name="ID_Item" ColumnName="ID_Item" />
+          <ScalarProperty Name="ID_OrderInfo" ColumnName="ID_OrderInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetUnDoneOrders" FunctionName="MenuDBModel.Store.GetUnDoneOrders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MenuDBModel.GetUnDoneOrders_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

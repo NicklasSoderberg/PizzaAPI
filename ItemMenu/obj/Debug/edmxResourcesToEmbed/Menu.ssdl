@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MenuDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="FirstName" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderTime" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PizzaDB.dbo.OrderInfoItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="OrderInfoItem">
+    <Key>
+      <PropertyRef Name="ID_Primary" />
+      <PropertyRef Name="ID_OrderInfo" />
+      <PropertyRef Name="ID_Item" />
+    </Key>
+    <Property Name="ID_Primary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_OrderInfo" Type="int" Nullable="false" />
+    <Property Name="ID_Item" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PizzaDB.dbo.vwItems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwItems">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <Function Name="GetIngrediens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Item_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetOrdersByPhone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Phone" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="GetOrdersStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetUnDoneOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="MenuDBModelStoreContainer">
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInfoItem" EntityType="Self.OrderInfoItem" store:Type="Tables" Schema="dbo">
+      <!--  <DefiningQuery>SELECT 
+    [OrderInfoItem].[ID_Primary] AS [ID_Primary], 
+    [OrderInfoItem].[ID_OrderInfo] AS [ID_OrderInfo], 
+    [OrderInfoItem].[ID_Item] AS [ID_Item]
+    FROM [dbo].[OrderInfoItem] AS [OrderInfoItem]</DefiningQuery> -->
+    </EntitySet>
+    <EntitySet Name="vwItems" EntityType="Self.vwItems" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwItems].[ID] AS [ID], 
+    [vwItems].[Name] AS [Name], 
+    [vwItems].[Type] AS [Type], 
+    [vwItems].[Price] AS [Price]
+    FROM [dbo].[vwItems] AS [vwItems]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

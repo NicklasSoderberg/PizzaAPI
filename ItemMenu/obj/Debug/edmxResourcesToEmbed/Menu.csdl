@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MenuDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="vwItems">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MenuDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="vwItems" EntityType="Self.vwItems" />
+    <FunctionImport Name="GetIngrediens" ReturnType="Collection(MenuDBModel.GetIngrediens_Result)">
+      <Parameter Name="Item_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetOrdersByPhone" ReturnType="Collection(MenuDBModel.GetOrdersByPhone_Result)">
+      <Parameter Name="Phone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetOrdersStatus" ReturnType="Collection(String)">
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Item" EntityType="MenuDBModel.Item" />
+    <EntitySet Name="OrderInfo" EntityType="MenuDBModel.OrderInfo" />
+    <EntitySet Name="OrderInfoItem" EntityType="MenuDBModel.OrderInfoItem" />
+    <FunctionImport Name="GetUnDoneOrders" ReturnType="Collection(MenuDBModel.GetUnDoneOrders_Result)" />
+  </EntityContainer>
+  <ComplexType Name="GetIngrediens_Result">
+    <Property Type="String" Name="Ingrediens" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetOrdersByPhone_Result">
+    <Property Type="Int32" Name="ID_OrderInfo" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Mail" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderInfoItem">
+    <Key>
+      <PropertyRef Name="ID_OrderInfo" />
+      <PropertyRef Name="ID_Item" />
+      <PropertyRef Name="ID_Primary" />
+    </Key>
+    <Property Name="ID_OrderInfo" Type="Int32" Nullable="false" />
+    <Property Name="ID_Item" Type="Int32" Nullable="false" />
+    <Property Name="ID_Primary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <ComplexType Name="GetUnDoneOrders_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="OrderTime" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+</Schema>

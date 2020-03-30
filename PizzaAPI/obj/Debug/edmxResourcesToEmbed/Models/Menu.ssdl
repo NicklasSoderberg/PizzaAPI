@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PizzaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PizzaDB.dbo.vwOther' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwOther">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PizzaDB.dbo.vwPizza' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwPizza">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PizzaDB.dbo.vwVegan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwVegan">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="PizzaDBModelStoreContainer">
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vwOther" EntityType="Self.vwOther" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwOther].[ID] AS [ID], 
+    [vwOther].[Name] AS [Name], 
+    [vwOther].[Type] AS [Type], 
+    [vwOther].[Price] AS [Price]
+    FROM [dbo].[vwOther] AS [vwOther]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwPizza" EntityType="Self.vwPizza" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwPizza].[ID] AS [ID], 
+    [vwPizza].[Name] AS [Name], 
+    [vwPizza].[Type] AS [Type], 
+    [vwPizza].[Price] AS [Price]
+    FROM [dbo].[vwPizza] AS [vwPizza]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwVegan" EntityType="Self.vwVegan" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwVegan].[ID] AS [ID], 
+    [vwVegan].[Name] AS [Name], 
+    [vwVegan].[Type] AS [Type], 
+    [vwVegan].[Price] AS [Price]
+    FROM [dbo].[vwVegan] AS [vwVegan]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

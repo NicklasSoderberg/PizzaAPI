@@ -1,0 +1,11 @@
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\obj\Debug\ItemMenu.csprojAssemblyReference.cache
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\bin\Debug\ItemMenu.dll.config
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\bin\Debug\ItemMenu.dll
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\bin\Debug\ItemMenu.pdb
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\bin\Debug\EntityFramework.dll
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\bin\Debug\EntityFramework.xml
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\obj\Debug\ItemMenu.csproj.CopyComplete
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\obj\Debug\ItemMenu.dll
+C:\Users\Nicklas\source\repos\PizzaAPI\ItemMenu\obj\Debug\ItemMenu.pdb
