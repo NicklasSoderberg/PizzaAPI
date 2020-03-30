@@ -22,7 +22,6 @@ namespace PizzaAPI.Controllers
         {
             using (MenuDBEntities entities = new MenuDBEntities())
             {
-                
                 List<string> temp = entities.GetOrdersStatus(orderID).ToList();
                 if(temp.Count == 0)
                 {
